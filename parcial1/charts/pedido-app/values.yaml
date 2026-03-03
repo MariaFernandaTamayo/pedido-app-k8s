@@ -1,0 +1,55 @@
+backend:
+  image:
+    repository: springcommunity/spring-petclinic-rest
+    tag: 3.0.2
+    pullPolicy: IfNotPresent
+
+  replicas: 2
+
+  service:
+    port: 9966
+
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "300m"
+      memory: "512Mi"
+
+
+  replicas: 2
+
+  service:
+    port: 9966
+
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "300m"
+      memory: "512Mi"
+
+
+frontend:
+  image: nginx
+  tag: latest
+  replicas: 1
+
+postgresql:
+  enabled: true
+
+  image:
+    registry: docker.io
+    repository: bitnami/postgresql
+    tag: latest
+
+  auth:
+    username: admin
+    password: admin123
+    database: pedidosdb
+
+  primary:
+    enabled: true
+    size: 1Gi

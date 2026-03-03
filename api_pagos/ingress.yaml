@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pago-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /pago
+        pathType: Prefix
+        backend:
+          service:
+            name: pago
+            port:
+              number: 8080

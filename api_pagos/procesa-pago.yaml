@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: procesa-pago
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: procesa-pago
+  template:
+    metadata:
+      labels:
+        app: procesa-pago
+    spec:
+      containers:
+      - name: procesa-pago
+        image: procesa-pago:1.0
+        ports:
+        - containerPort: 9090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: procesa-pago
+spec:
+  type: ClusterIP
+  selector:
+    app: procesa-pago
+  ports:
+  - port: 9090
+    targetPort: 9090
