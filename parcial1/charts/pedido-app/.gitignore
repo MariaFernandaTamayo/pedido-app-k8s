@@ -1,0 +1,11 @@
+.git
+node_modules
+target
+*.log
+*.zip
+*.tar
+*.gz
+*.exe
+*.jar
+*.class
+.minikube
